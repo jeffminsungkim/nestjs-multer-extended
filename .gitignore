@@ -1,0 +1,23 @@
+# dependencies
+/node_modules
+
+# IDE
+/.idea
+/.awcache
+/.vscode
+
+# misc
+npm-debug.log
+.DS_Store
+
+# tests
+/test
+/coverage
+/.nyc_output
+
+# dist
+dist
+
+# Environment variables
+.env
+.env.*
