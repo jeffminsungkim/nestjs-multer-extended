@@ -2,19 +2,19 @@
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
-    "removeComments": false,
+    "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "target": "es6",
     "sourceMap": false,
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": "./lib",
     "baseUrl": "./",
     "noLib": false,
     "noImplicitAny": false,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["lib/**/*.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts", "tests"]
 }
