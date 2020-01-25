@@ -1,10 +1,10 @@
 {
-  "name": "nest-multer-s3",
+  "name": "nest-multer-extended",
   "version": "0.0.1",
-  "description": "",
+  "description": "Additional NestJS MulterModule",
   "author": "Minsung Kim",
   "license": "MIT",
-  "url": "https://github.com/jeffminsungkim/nest-multer-s3#readme",
+  "url": "https://github.com/jeffminsungkim/nest-multer-extended#readme",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
@@ -18,15 +18,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeffminsungkim/nest-multer-s3"
+    "url": "https://github.com/jeffminsungkim/nest-multer-extended"
   },
   "keywords": [
     "nestjs",
+    "nest",
     "multer",
     "file upload",
     "file interceptor",
+    "extend",
+    "extended",
     "aws",
-    "aws-s3",
+    "s3",
     "amazon s3"
   ],
   "publishConfig": {
