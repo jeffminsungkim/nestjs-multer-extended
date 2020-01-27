@@ -1,4 +1,8 @@
 import { NestMulterS3Options } from '../../../lib/interfaces';
+import {
+  IMAGE_UPLOAD_MODULE_BASE_PATH,
+  USER_PROFILE_IMAGE_UPLOAD_MODULE_BASE_PATH,
+} from '../../fixtures/base-path.constants';
 
 export default {
   optionA: {
@@ -6,7 +10,7 @@ export default {
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     region: process.env.AWS_S3_REGION,
     bucket: process.env.AWS_S3_BUCKET_NAME,
-    basePath: 'user-profile-image-upload-module',
+    basePath: USER_PROFILE_IMAGE_UPLOAD_MODULE_BASE_PATH,
     fileSize: process.env.AWS_S3_MAX_IMAGE_SIZE,
   } as NestMulterS3Options,
   optionB: {
@@ -14,8 +18,8 @@ export default {
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     region: process.env.AWS_S3_REGION,
     bucket: process.env.AWS_S3_BUCKET_NAME,
-    basePath: 'image-upload-module',
+    basePath: IMAGE_UPLOAD_MODULE_BASE_PATH,
     fileSize: 10 * 1024 * 1024,
-    acl: 'public-read',
+    acl: 'private',
   } as NestMulterS3Options,
 };
