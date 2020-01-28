@@ -1,11 +1,13 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { AppModule } from './app.module';
+import { MulterExceptions } from '../../lib/multer/multer-exceptions.enum';
 import { uid } from '../fixtures/uid';
 import {
   IMAGE_UPLOAD_MODULE_BASE_PATH,
   USER_PROFILE_IMAGE_UPLOAD_MODULE_BASE_PATH,
 } from '../fixtures/base-path.constants';
+
 import path from 'path';
 import request from 'supertest';
 
@@ -57,6 +59,26 @@ describe('AppModule', () => {
 
       expect(res.status).toEqual(400);
     });
+
+    it(`should not upload an image when its size exceed the limit`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/image-upload/big-size-file`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/cat.jpg'));
+
+      expect(res.status).toEqual(413);
+      expect(res.body.message).toEqual(MulterExceptions.LIMIT_FILE_SIZE);
+    });
+
+    it(`should upload an image when the size limit option sets higher than the file size`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/image-upload/big-size-file-higher-limit`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/cat.jpg'));
+
+      expect(res.status).toEqual(201);
+      expect(res.body.key).toEqual(`${basePath}/cat.jpg`);
+    });
   });
 
   describe('UserProfileImageUploadController /POST', () => {
@@ -81,6 +103,32 @@ describe('AppModule', () => {
 
       expect(res.status).toEqual(201);
       expect(res.body.key).toEqual(`${dynamicPath}/crying.jpg`);
+    });
+
+    it(`should upload both an original and a thumbnail image`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/user-profile-image-upload/create-thumbnail-with-custom-options`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/crying.jpg'));
+      const { thumbnail, original } = res.body;
+
+      expect(res.status).toEqual(201);
+      expect(thumbnail.width).toEqual(250);
+      expect(thumbnail.height).toEqual(250);
+      expect(thumbnail.key).toEqual(`${basePath}/crying.jpg-thumbnail`);
+      expect(original.key).toEqual(`${basePath}/crying.jpg-original`);
+    });
+
+    it(`should upload resized image`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/user-profile-image-upload/resized`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/go.jpeg'));
+
+      expect(res.status).toEqual(201);
+      expect(res.body.width).toEqual(500);
+      expect(res.body.height).toEqual(450);
+      expect(res.body.key).toEqual(`${basePath}/go.jpeg`);
     });
   });
 });

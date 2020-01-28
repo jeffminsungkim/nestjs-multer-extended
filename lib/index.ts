@@ -1,4 +1,4 @@
-export * from './nest-multer-s3.service';
-export * from './nest-s3-multer-core.module';
+export * from './multer-config.service';
+export * from './multer-extended-core.module';
 export * from './interfaces';
 export * from './constants';

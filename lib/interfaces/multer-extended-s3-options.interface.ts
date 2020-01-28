@@ -1,6 +1,4 @@
-import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
-
-export interface NestMulterS3Options extends MulterOptions {
+export interface MulterExtendedS3Options {
   readonly accessKeyId: string;
   readonly secretAccessKey: string;
   readonly region: string;

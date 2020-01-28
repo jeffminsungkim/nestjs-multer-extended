@@ -1,15 +1,15 @@
-import { NestMulterS3Options } from './interfaces';
-import { NEST_MULTER_S3_OPTIONS, NEST_MULTER_S3_MODULE_ID } from './constants';
+import { MulterExtendedS3Options } from './interfaces';
+import { MULTER_EXTENDED_S3_OPTIONS, MULTER_EXTENDED_S3_MODULE_ID } from './constants';
 import { randomStringGenerator } from './utils/random-string-generator.util';
 
-export function createNestS3MulterProviders(options: NestMulterS3Options) {
+export function createNestS3MulterProviders(options: MulterExtendedS3Options) {
   return [
     {
-      provide: NEST_MULTER_S3_OPTIONS,
+      provide: MULTER_EXTENDED_S3_OPTIONS,
       useValue: options,
     },
     {
-      provide: NEST_MULTER_S3_MODULE_ID,
+      provide: MULTER_EXTENDED_S3_MODULE_ID,
       useValue: randomStringGenerator(),
     },
   ];
