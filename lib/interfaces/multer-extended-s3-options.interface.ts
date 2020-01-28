@@ -1,3 +1,5 @@
+import { LoggerService } from '@nestjs/common';
+
 export interface MulterExtendedS3Options {
   readonly accessKeyId: string;
   readonly secretAccessKey: string;
@@ -6,4 +8,5 @@ export interface MulterExtendedS3Options {
   readonly basePath: string;
   readonly acl?: string;
   readonly fileSize?: number | string;
+  readonly logger?: LoggerService;
 }
