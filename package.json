@@ -1,7 +1,7 @@
 {
-  "name": "nest-multer-extended",
+  "name": "nestjs-multer-extended",
   "version": "0.0.1",
-  "description": "Additional NestJS MulterModule",
+  "description": "Extended MulterModule for NestJS",
   "author": "Minsung Kim",
   "license": "MIT",
   "url": "https://github.com/jeffminsungkim/nest-multer-extended#readme",
@@ -29,8 +29,7 @@
     "extend",
     "extended",
     "aws",
-    "s3",
-    "amazon s3"
+    "s3"
   ],
   "publishConfig": {
     "access": "public"
@@ -54,6 +53,7 @@
     "@types/jest": "24.9.0",
     "@types/multer": "^1.3.10",
     "@types/node": "13.1.8",
+    "@types/sharp": "^0.24.0",
     "@types/supertest": "2.0.8",
     "husky": "^4.2.0",
     "jest": "25.1.0",
