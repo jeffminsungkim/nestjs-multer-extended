@@ -45,11 +45,7 @@ jobs:
   integration_tests:
     working_directory: ~/nestjs-multer-extended
     docker:
-<<<<<<< HEAD
-      - image: circleci/node:11
-=======
       - image: circleci/node:12
->>>>>>> chore: add ci config.yml and fix package.json
     steps:
       - checkout
       - *restore-cache
