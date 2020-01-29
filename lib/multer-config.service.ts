@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk';
 import s3Storage from 'multer-sharp-s3';
-import { Injectable, Inject, Logger, BadRequestException } from '@nestjs/common';
+import { Injectable, Inject, Logger, BadRequestException, LoggerService } from '@nestjs/common';
 import { MulterOptionsFactory, MulterModuleOptions } from '@nestjs/platform-express';
 import { MULTER_EXTENDED_S3_OPTIONS } from './constants';
 import { MulterExtendedS3Options } from './interfaces';
@@ -18,7 +18,7 @@ export class MulterConfigService implements MulterS3ConfigService {
   static DEFAULT_REGION: string = 'us-west-2';
   static DEFAULT_MAX_FILESIZE: number = 3145728;
   private readonly S3: AWS.S3;
-  private readonly logger: Logger;
+  private readonly logger: LoggerService;
 
   constructor(@Inject(MULTER_EXTENDED_S3_OPTIONS) private s3Options: MulterExtendedS3Options) {
     AWS.config.update({
@@ -28,7 +28,7 @@ export class MulterConfigService implements MulterS3ConfigService {
     });
 
     this.S3 = new AWS.S3();
-    this.logger = new Logger('NestMulterS3Service Options');
+    this.logger = s3Options.logger || new Logger('NestMulterS3Service Options');
     this.logger.log(JSON.stringify(s3Options));
   }
 
