@@ -4,7 +4,7 @@
   "description": "Extended MulterModule for NestJS",
   "author": "Minsung Kim",
   "license": "MIT",
-  "url": "https://github.com/jeffminsungkim/nest-multer-extended#readme",
+  "url": "https://github.com/jeffminsungkim/nestjs-multer-extended#readme",
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeffminsungkim/nest-multer-extended"
+    "url": "https://github.com/jeffminsungkim/nestjs-multer-extended"
   },
   "keywords": [
     "nestjs",
