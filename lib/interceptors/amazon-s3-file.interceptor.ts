@@ -83,7 +83,7 @@ export function AmazonS3FileInterceptor(
       }
 
       const options = Object.keys(this.localOptions);
-      return options.some(key => key === 'thumbnail' || key === 'resize');
+      return options.some(option => option === 'thumbnail' || option === 'resize');
     }
 
     private pickStorageOptions() {
