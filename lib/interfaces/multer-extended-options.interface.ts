@@ -1,9 +1,9 @@
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
 
-export type ResizeOptions = {
+export interface ResizeOptions {
   width: number;
   height: number;
-};
+}
 
 export interface PreciseSizeOptions extends ResizeOptions {
   suffix: string;

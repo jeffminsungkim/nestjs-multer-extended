@@ -14,9 +14,9 @@ interface MulterS3ConfigService extends MulterOptionsFactory {
 
 @Injectable()
 export class MulterConfigService implements MulterS3ConfigService {
-  static DEFAULT_ACL: string = 'public-read';
-  static DEFAULT_REGION: string = 'us-west-2';
-  static DEFAULT_MAX_FILESIZE: number = 3145728;
+  static DEFAULT_ACL = 'public-read';
+  static DEFAULT_REGION = 'us-west-2';
+  static DEFAULT_MAX_FILESIZE = 3145728;
   private readonly S3: AWS.S3;
   private readonly logger: LoggerService;
 
