@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import { AppModule } from './app.module';
-import { MulterExceptions } from '../../lib/multer/multer-exceptions.enum';
+import { MulterExceptions } from '../../lib/multer-sharp/enums';
 import { uid } from '../fixtures/uid';
 import {
   IMAGE_UPLOAD_MODULE_BASE_PATH,
@@ -58,6 +58,17 @@ describe('AppModule', () => {
         .attach('file', path.resolve(__dirname, 'data/Readme.md'));
 
       expect(res.status).toEqual(400);
+      expect(res.body.message).toEqual(MulterExceptions.INVALID_IMAGE_FILE_TYPE);
+    });
+
+    it(`should upload non image format if the file filter is missing`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/image-upload/non-image-file-no-filter`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/Readme.md'));
+
+      expect(res.status).toEqual(201);
+      expect(res.body.key).toEqual(`${basePath}/Readme.md`);
     });
 
     it(`should not upload an image when its size exceed the limit`, async () => {
@@ -117,6 +128,20 @@ describe('AppModule', () => {
       expect(thumbnail.height).toEqual(250);
       expect(thumbnail.key).toEqual(`${basePath}/crying.jpg-thumbnail`);
       expect(original.key).toEqual(`${basePath}/crying.jpg-original`);
+    });
+
+    it(`should upload thumb and original under the dynamic path "${dynamicPath}/test"`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/user-profile-image-upload/create-thumbnail-with-dynamic-key`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/crying.jpg'));
+      const { thumb, original } = res.body;
+
+      expect(res.status).toEqual(201);
+      expect(thumb.width).toEqual(200);
+      expect(thumb.height).toEqual(200);
+      expect(thumb.key).toEqual(`${dynamicPath}/test/crying.jpg-thumb`);
+      expect(original.key).toEqual(`${dynamicPath}/test/crying.jpg-original`);
     });
 
     it(`should upload resized image`, async () => {

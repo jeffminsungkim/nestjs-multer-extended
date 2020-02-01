@@ -1,15 +1,12 @@
 import AWS from 'aws-sdk';
-import s3Storage from 'multer-sharp-s3';
+import { AmazonS3Storage, ImageFileExtensions, MulterExceptions } from './multer-sharp';
 import { Injectable, Inject, Logger, BadRequestException, LoggerService } from '@nestjs/common';
 import { MulterOptionsFactory, MulterModuleOptions } from '@nestjs/platform-express';
 import { MULTER_EXTENDED_S3_OPTIONS } from './constants';
 import { MulterExtendedS3Options } from './interfaces';
-import { ImageFileExtensions } from './multer/image-file-extensions.enum';
-import { MulterExceptions } from './multer/multer-exceptions.enum';
 
-// tslint:disable-next-line:no-empty-interface
 interface MulterS3ConfigService extends MulterOptionsFactory {
-  // Customize this as needed to describe the MulterConfigService
+  filterImageFileExtension(req, file, cb): any;
 }
 
 @Injectable()
@@ -33,7 +30,7 @@ export class MulterConfigService implements MulterS3ConfigService {
   }
 
   createMulterOptions(): MulterModuleOptions | Promise<MulterModuleOptions> {
-    const storage = s3Storage({
+    const storage = AmazonS3Storage({
       Key: (req, file, cb) => {
         const basePath = `${this.s3Options.basePath}`;
 
@@ -53,9 +50,9 @@ export class MulterConfigService implements MulterS3ConfigService {
     };
   }
 
-  private filterImageFileExtension(req, file, cb) {
+  filterImageFileExtension(req, file, cb) {
     const { mimetype } = file;
-    const extension = mimetype.split('/').pop();
+    const extension = mimetype.substring(mimetype.lastIndexOf('/') + 1);
     const mimetypeIsNotImage = (ext: ImageFileExtensions): boolean =>
       !Object.values(ImageFileExtensions).includes(ext);
 

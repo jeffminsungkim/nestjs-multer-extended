@@ -9,11 +9,13 @@ export class UserProfileImageUploadController {
   async uploadImageWithoutKeyOption(@UploadedFile() file: any): Promise<any> {
     return file;
   }
+
   @Post('with-dynamic-key-path')
-  @UseInterceptors(AmazonS3FileInterceptor('file', null, uid))
+  @UseInterceptors(AmazonS3FileInterceptor('file', { dynamicPath: uid }))
   async uploadImageWithKeyOption(@UploadedFile() file: any): Promise<any> {
     return file;
   }
+
   @Post('create-thumbnail-with-custom-options')
   @UseInterceptors(
     AmazonS3FileInterceptor('file', {
@@ -24,6 +26,19 @@ export class UserProfileImageUploadController {
   async uploadImageWithThumbnail(@UploadedFile() file: any): Promise<any> {
     return file;
   }
+
+  @Post('create-thumbnail-with-dynamic-key')
+  @UseInterceptors(
+    AmazonS3FileInterceptor('file', {
+      thumbnail: { suffix: 'thumb', width: 200, height: 200 },
+      limits: { fileSize: 2 * 1024 * 1024 },
+      dynamicPath: `${uid}/test`,
+    }),
+  )
+  async uploadImageWithDynamicKey(@UploadedFile() file: any): Promise<any> {
+    return file;
+  }
+
   @Post('resized')
   @UseInterceptors(
     AmazonS3FileInterceptor('file', {
