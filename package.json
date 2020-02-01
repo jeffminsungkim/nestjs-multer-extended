@@ -16,8 +16,7 @@
     "format": "prettier --write \"lib/**/*.ts\"",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "lint:fix": "tslint --fix -c tslint.json 'lib/**/*{.ts,.tsx}'",
-    "test:integration": "jest --runInBand",
-    "test:coverage": "jest --coverage"
+    "test:integration": "jest --runInBand --coverage"
   },
   "repository": {
     "type": "git",
@@ -43,8 +42,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.608.0",
-    "multer-sharp-s3": "^0.1.0",
-    "uuid": "^3.4.0"
+    "sharp": "^0.24.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",

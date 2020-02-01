@@ -1,38 +1,77 @@
-import { Module, DynamicModule } from '@nestjs/common';
-import { MulterModule } from '@nestjs/platform-express';
-import { MulterExtendedS3Options, MulterExtendedS3AsyncOptions } from './interfaces';
-import { MulterExtendedCoreModule } from './multer-extended-core.module';
+import { Module, DynamicModule, Provider } from '@nestjs/common';
+import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 import { MulterConfigService } from './multer-config.service';
+import {
+  createMulterExtendedProviders,
+  createMulterOptionsFactory,
+} from './multer-extended.providers';
+import {
+  MULTER_EXTENDED_S3_OPTIONS,
+  MULTER_EXTENDED_S3_MODULE_ID,
+  MULTER_MODULE_OPTIONS,
+} from './constants';
+import {
+  MulterExtendedS3Options,
+  MulterExtendedS3AsyncOptions,
+  MulterExtendedS3OptionsFactory,
+} from './interfaces';
 
-@Module({})
+@Module({
+  providers: [MulterConfigService],
+  exports: [MulterConfigService],
+})
 export class MulterExtendedModule {
-  static register(options?: MulterExtendedS3Options): DynamicModule {
-    const ExtendedMulter = MulterExtendedCoreModule.register(options);
+  public static register(options: MulterExtendedS3Options): DynamicModule {
     return {
       module: MulterExtendedModule,
-      imports: [
-        ExtendedMulter,
-        MulterModule.registerAsync({
-          imports: [ExtendedMulter],
-          useExisting: MulterConfigService,
-        }),
-      ],
-      exports: [ExtendedMulter, MulterModule],
+      providers: createMulterExtendedProviders(options),
+      exports: [MULTER_EXTENDED_S3_OPTIONS, MULTER_MODULE_OPTIONS],
     };
   }
 
-  static registerAsync(options: MulterExtendedS3AsyncOptions): DynamicModule {
-    const ExtendedMulter = MulterExtendedCoreModule.registerAsync(options);
+  public static registerAsync(options: MulterExtendedS3AsyncOptions): DynamicModule {
     return {
       module: MulterExtendedModule,
-      imports: [
-        ExtendedMulter,
-        MulterModule.registerAsync({
-          imports: [ExtendedMulter],
-          useExisting: MulterConfigService,
-        }),
+      providers: [
+        ...this.createProviders(options),
+        {
+          provide: MULTER_EXTENDED_S3_MODULE_ID,
+          useValue: randomStringGenerator(),
+        },
+        createMulterOptionsFactory,
       ],
-      exports: [ExtendedMulter, MulterModule],
+      exports: [MULTER_EXTENDED_S3_OPTIONS, MULTER_MODULE_OPTIONS],
+    };
+  }
+
+  private static createProviders(options: MulterExtendedS3AsyncOptions): Provider[] {
+    if (options.useExisting || options.useFactory) {
+      return [this.createOptionsProvider(options)];
+    }
+
+    return [
+      this.createOptionsProvider(options),
+      {
+        provide: options.useClass,
+        useClass: options.useClass,
+      },
+    ];
+  }
+
+  private static createOptionsProvider(options: MulterExtendedS3AsyncOptions): Provider {
+    if (options.useFactory) {
+      return {
+        provide: MULTER_EXTENDED_S3_OPTIONS,
+        useFactory: options.useFactory,
+        inject: options.inject || [],
+      };
+    }
+
+    return {
+      provide: MULTER_EXTENDED_S3_OPTIONS,
+      useFactory: async (optionsFactory: MulterExtendedS3OptionsFactory) =>
+        optionsFactory.createMulterExtendedS3Options(),
+      inject: [options.useExisting || options.useClass],
     };
   }
 }
