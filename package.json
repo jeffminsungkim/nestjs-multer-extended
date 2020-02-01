@@ -78,6 +78,7 @@
     }
   },
   "lint-staged": {
-    "*.ts": "prettier --write && tslint -p tsconfig.json"
+    "*.ts": ["pretty-quick", "tslint -p tsconfig.json"],
+    "*.{js,json}": "pretty-quick"
   }
 }
