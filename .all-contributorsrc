@@ -11,7 +11,11 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/6092023?v=4",
       "profile": "https://jeffminsungkim.com",
       "contributions": [
-        "code"
+        "code",
+        "maintenance",
+        "doc",
+        "infra",
+        "ideas"
       ]
     }
   ],
