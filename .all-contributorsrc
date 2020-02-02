@@ -15,7 +15,8 @@
         "maintenance",
         "doc",
         "infra",
-        "ideas"
+        "ideas",
+        "test"
       ]
     }
   ],
