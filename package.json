@@ -8,6 +8,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
+    "commit": "git-cz",
     "prepublish:npm": "npm run build",
     "publish:npm": "npm publish --access public",
     "prepublish:next": "npm run build",
@@ -15,8 +16,7 @@
     "format": "prettier --write \"lib/**/*.ts\"",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "lint:fix": "tslint --fix -c tslint.json 'lib/**/*{.ts,.tsx}'",
-    "test:integration": "jest --runInBand",
-    "test:coverage": "jest --coverage"
+    "test:integration": "jest --runInBand --coverage"
   },
   "repository": {
     "type": "git",
@@ -42,10 +42,11 @@
   },
   "dependencies": {
     "aws-sdk": "^2.608.0",
-    "multer-sharp-s3": "^0.1.0",
-    "uuid": "^3.4.0"
+    "sharp": "^0.24.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@nestjs/common": "^6.10.14",
     "@nestjs/core": "^6.10.14",
     "@nestjs/platform-express": "^6.10.14",
@@ -56,6 +57,8 @@
     "@types/node": "13.1.8",
     "@types/sharp": "^0.24.0",
     "@types/supertest": "2.0.8",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.0",
     "jest": "25.1.0",
     "lint-staged": "^10.0.5",
@@ -70,11 +73,18 @@
     "tsc-watch": "4.1.0",
     "tsconfig-paths": "3.9.0",
     "tslint": "6.0.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "3.7.5"
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
+      "commit-message": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
     }
   },
   "lint-staged": {

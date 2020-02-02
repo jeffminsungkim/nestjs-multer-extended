@@ -1,15 +1,18 @@
 import { MulterOptions } from '@nestjs/platform-express/multer/interfaces/multer-options.interface';
 
-export type ResizeOptions = {
+export interface ResizeOptions {
   width: number;
   height: number;
-};
+}
 
-export interface PreciseSizeOptions extends ResizeOptions {
+export interface MultipleSizeOptions {
   suffix: string;
+  width?: number;
+  height?: number;
 }
 
 export interface MulterExtendedOptions extends Pick<MulterOptions, 'fileFilter' | 'limits'> {
+  dynamicPath?: string;
   resize?: ResizeOptions;
-  thumbnail?: PreciseSizeOptions | PreciseSizeOptions[];
+  thumbnail?: MultipleSizeOptions | MultipleSizeOptions[];
 }

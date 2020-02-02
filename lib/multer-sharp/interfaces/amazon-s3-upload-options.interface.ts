@@ -1,0 +1,8 @@
+import { S3 } from 'aws-sdk';
+
+export interface AmazonS3UploadOptions extends Partial<S3.Types.PutObjectRequest> {
+  s3: S3;
+  Key?: any;
+  multiple?: boolean;
+  dynamicPath?: string;
+}
