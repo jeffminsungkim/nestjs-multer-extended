@@ -232,8 +232,6 @@ Key | Default | Description | Example
 
 You could help me out for some coffees 🥤 or give us a star ⭐️
 
-<a href="https://www.buymeacoffee.com/jeffminsungkim" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-orange.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 150px !important; border-radius: 5px !important;"></a>
-
 ## Maintainers
 
 - [Minsung Kim](https://github.com/jeffminsungkim)
