@@ -78,7 +78,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
       "commit-message": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
