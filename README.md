@@ -246,6 +246,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://jeffminsungkim.com"><img src="https://avatars1.githubusercontent.com/u/6092023?v=4" width="100px;" alt=""/><br /><sub><b>Minsung Kim</b></sub></a><br /><a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jeffminsungkim" title="Code">💻</a> <a href="#maintenance-jeffminsungkim" title="Maintenance">🚧</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jeffminsungkim" title="Documentation">📖</a> <a href="#infra-jeffminsungkim" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-jeffminsungkim" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jeffminsungkim" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/jmcdo29"><img src="https://avatars3.githubusercontent.com/u/28268680?v=4" width="100px;" alt=""/><br /><sub><b>Jay McDoniel</b></sub></a><br /><a href="#ideas-jmcdo29" title="Ideas, Planning, & Feedback">🤔</a> <a href="#tool-jmcdo29" title="Tools">🔧</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/pulls?q=is%3Apr+reviewed-by%3Ajmcdo29" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
