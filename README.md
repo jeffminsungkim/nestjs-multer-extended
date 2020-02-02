@@ -1,7 +1,4 @@
 <h1 align="center">
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 <div align="center">
   <a href="http://nestjs.com/" target="_blank">
     <img src="./media/header-light-theme.png" width="600" alt="NestJS Multer Extended Logo" />
@@ -241,9 +238,12 @@ You could help me out for some coffees 🥤 or give us a star ⭐️
 
 - [Minsung Kim](https://github.com/jeffminsungkim)
 
----
+&nbsp;
 
 This dynamic module was generated with [Nest Dynamic Package Generator Schematics](https://github.com/nestjsplus/dyn-schematics). You can read more about using the generator [here](https://github.com/nestjsplus/dyn-schematics).
+
+---
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
