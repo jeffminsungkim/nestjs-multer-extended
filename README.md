@@ -238,12 +238,6 @@ You could help me out for some coffees 🥤 or give us a star ⭐️
 
 - [Minsung Kim](https://github.com/jeffminsungkim)
 
-&nbsp;
-
-This dynamic module was generated with [Nest Dynamic Package Generator Schematics](https://github.com/nestjsplus/dyn-schematics). You can read more about using the generator [here](https://github.com/nestjsplus/dyn-schematics).
-
----
-
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
