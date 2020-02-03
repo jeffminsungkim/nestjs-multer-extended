@@ -4,12 +4,17 @@ import { S3 } from 'aws-sdk';
 import { ManagedUpload } from 'aws-sdk/lib/s3/managed_upload';
 import { isFunction, isString } from '@nestjs/common/utils/shared.utils';
 import { Request } from 'express';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { map, mergeMap, toArray, first } from 'rxjs/operators';
 import { lookup } from 'mime-types';
 import { S3StorageOptions, S3Storage } from './interfaces/s3-storage.interface';
-import { SharpOptions } from './interfaces/sharp-options.interface';
-import { getSharpOptions, transformImage, isOriginalSuffix } from './multer-sharp.utils';
+import { SharpOptions, Size, ExtendSize } from './interfaces/sharp-options.interface';
+import {
+  getSharpOptions,
+  getSharpOptionProps,
+  transformImage,
+  isOriginalSuffix,
+} from './multer-sharp.utils';
 
 export interface EventStream {
   stream: NodeJS.ReadableStream & Sharp;
@@ -100,12 +105,10 @@ export class MulterSharp implements StorageEngine, S3Storage {
       Metadata,
     } = storageOpts;
 
-    if (
-      storageOpts.multiple &&
-      Array.isArray(storageOpts.resize) &&
-      storageOpts.resize.length > 0
-    ) {
-      const sizes$ = from(storageOpts.resize);
+    const resizeBucket = getSharpOptionProps(storageOpts);
+
+    if (Array.isArray(resizeBucket) && resizeBucket.length > 0) {
+      const sizes$ = from(resizeBucket) as Observable<Size & ExtendSize>;
 
       sizes$
         .pipe(

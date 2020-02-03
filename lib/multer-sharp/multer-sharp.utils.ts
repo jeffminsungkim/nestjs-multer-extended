@@ -1,6 +1,7 @@
 import { BadRequestException, HttpException, PayloadTooLargeException } from '@nestjs/common';
 import sharp, { Sharp } from 'sharp';
 import { SharpOptions, ResizeOption } from './interfaces/sharp-options.interface';
+import { S3StorageOptions } from './interfaces/s3-storage.interface';
 import { ExtendedOptions, MulterExceptions } from './enums';
 
 export const transformException = (error: Error | undefined) => {
@@ -32,12 +33,18 @@ export const transformImage = (options: SharpOptions, size: ResizeOption): Sharp
   return imageStream;
 };
 
+export const getSharpOptionProps = (storageOpts: S3StorageOptions) => {
+  const prop = Object.keys(storageOpts).filter(p => p === 'resize' || p === 'resizeMultiple')[0];
+  return storageOpts[prop];
+};
+
 export const isOriginalSuffix = (suffix: string) => suffix === 'original';
 const isObject = obj => typeof obj === 'object' && obj !== null;
 
 const resolveImageStream = (key: string, value, size, imageStream: Sharp) => {
   switch (key) {
     case ExtendedOptions.RESIZE_IMAGE:
+    case ExtendedOptions.RESIZE_IMAGE_MULTIPLE_SIZES:
       if (isObject(size)) {
         imageStream = imageStream.resize(size.width, size.height, size.options);
       }
@@ -52,6 +59,7 @@ const resolveImageStream = (key: string, value, size, imageStream: Sharp) => {
 export const getSharpOptions = (options: SharpOptions): SharpOptions => {
   return {
     resize: options.resize,
+    resizeMultiple: options.resizeMultiple,
     ignoreAspectRatio: options.ignoreAspectRatio,
   };
 };

@@ -68,10 +68,7 @@ export function AmazonS3FileInterceptor(
         case ExtendedOptions.CREATE_THUMBNAIL:
           storageOptions = {
             ...this.options.storage.storageOpts,
-            resize: !Array.isArray(this.localOptions[extendedOptionProperty])
-              ? [this.localOptions[extendedOptionProperty], { suffix: 'original' }]
-              : this.localOptions[extendedOptionProperty],
-            multiple: true,
+            resize: [this.localOptions[extendedOptionProperty], { suffix: 'original' }],
             ignoreAspectRatio: true,
             dynamicPath: this.localOptions.dynamicPath,
           };
@@ -80,6 +77,14 @@ export function AmazonS3FileInterceptor(
           storageOptions = {
             ...this.options.storage.storageOpts,
             resize: this.localOptions[extendedOptionProperty],
+            dynamicPath: this.localOptions.dynamicPath,
+          };
+          return AmazonS3Storage(storageOptions);
+        case ExtendedOptions.RESIZE_IMAGE_MULTIPLE_SIZES:
+          storageOptions = {
+            ...this.options.storage.storageOpts,
+            resizeMultiple: this.localOptions[extendedOptionProperty],
+            ignoreAspectRatio: true,
             dynamicPath: this.localOptions.dynamicPath,
           };
           return AmazonS3Storage(storageOptions);
