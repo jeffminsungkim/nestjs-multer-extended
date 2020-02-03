@@ -30,7 +30,7 @@
 - Single file upload to an Amazon S3 bucket
 - Support for dynamic paths, upload files wherever you want!
 - Generate thumbnail image along with the original
-- Resize single/multiple images
+- Resize single image or even make it into different sizes
 - Load AWS S3 configuration at runtime
 
 ## Installation
@@ -146,6 +146,24 @@ If you want to resize the file before the upload, you can pass on the resize pro
   AmazonS3FileInterceptor('file', {
     resize: { width: 500, height: 400 },
   }),
+)
+uploadFile(@UploadedFile() file) {
+  console.log(file);
+}
+```
+
+You can pass an array of size options to resize a single image into different sizes as follows:
+
+```typescript
+@Post('upload')
+@UseInterceptors(
+  AmazonS3FileInterceptor('file', {
+    resizeMultiple: [
+      { suffix: 'sm', width: 200, height: 200 },
+      { suffix: 'md', width: 300, height: 300 },
+      { suffix: 'lg', width: 400, height: 400 },
+    ],
+  }
 )
 uploadFile(@UploadedFile() file) {
   console.log(file);
