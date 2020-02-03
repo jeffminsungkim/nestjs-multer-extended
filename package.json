@@ -6,6 +6,9 @@
   "license": "MIT",
   "url": "https://github.com/jeffminsungkim/nestjs-multer-extended#readme",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
     "commit": "git-cz",
@@ -26,6 +29,8 @@
     "nestjs",
     "nest",
     "multer",
+    "multer-sharp",
+    "sharp",
     "file upload",
     "file interceptor",
     "extend",
