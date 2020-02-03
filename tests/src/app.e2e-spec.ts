@@ -155,5 +155,24 @@ describe('AppModule', () => {
       expect(res.body.height).toEqual(450);
       expect(res.body.key).toEqual(`${basePath}/go.jpeg`);
     });
+
+    it(`should upload images in different sizes`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/user-profile-image-upload/different-sizes`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/cat.jpg'));
+      const { sm, md, lg } = res.body;
+
+      expect(res.status).toEqual(201);
+      expect(sm.width).toEqual(200);
+      expect(sm.height).toEqual(200);
+      expect(md.height).toEqual(300);
+      expect(md.height).toEqual(300);
+      expect(lg.height).toEqual(400);
+      expect(lg.height).toEqual(400);
+      expect(sm.key).toEqual(`${dynamicPath}/different-sizes/cat.jpg-sm`);
+      expect(md.key).toEqual(`${dynamicPath}/different-sizes/cat.jpg-md`);
+      expect(lg.key).toEqual(`${dynamicPath}/different-sizes/cat.jpg-lg`);
+    });
   });
 });

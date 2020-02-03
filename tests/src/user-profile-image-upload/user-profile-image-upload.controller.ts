@@ -48,4 +48,19 @@ export class UserProfileImageUploadController {
   async uploadResizedImage(@UploadedFile() file: any): Promise<any> {
     return file;
   }
+
+  @Post('different-sizes')
+  @UseInterceptors(
+    AmazonS3FileInterceptor('file', {
+      resizeMultiple: [
+        { suffix: 'sm', width: 200, height: 200 },
+        { suffix: 'md', width: 300, height: 300 },
+        { suffix: 'lg', width: 400, height: 400 },
+      ],
+      dynamicPath: `${uid}/different-sizes`,
+    }),
+  )
+  async uploadImageWithDifferentSizes(@UploadedFile() file: any): Promise<any> {
+    return file;
+  }
 }
