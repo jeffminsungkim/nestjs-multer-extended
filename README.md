@@ -240,11 +240,12 @@ interface MulterExtendedS3Options {
 
 Key | Default | Description | Example
 --- | --- | --- | ---
-`dynamicPath` | undefined | The name that you assign to an S3 object
+`dynamicPath` | undefined | The name that you assign to an S3 object | "aec16138-a75a-4961-b8c1-8e803b6bf2cf/random/dir"
 `fileFilter` | Accepts JPEG, PNG types only | Function to control which files are accepted
 `limits` | 3MB | Limits of the uploaded data | 5242880 (in bytes)
 `resize` | undefined | Resize a single file | { width: 300, height: 350 }
-`thumbnail` | undefined | Create a thumbnail image (`object` or `Array<object>`) | { suffix: 'thumbnail', width: 200, height: 200 }
+`resizeMultiple` | undefined | Resize a single file into different sizes (`Array<object>`) | [{ suffix: 'md', width: 300, height: 350 }, { suffix: 'sm', width: 200, height: 200 }]
+`thumbnail` | undefined | Create a thumbnail image (`object`) | { suffix: 'thumbnail', width: 200, height: 200 }
 
 ## Support
 
