@@ -7,21 +7,30 @@
 </h1>
 
 <div align="center">
+  <a href="https://www.npmjs.com/package/nestjs-multer-extended">
+    <img src="https://img.shields.io/npm/v/nestjs-multer-extended.svg" alt="NPM Version" />
+  </a>
+  <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/blob/master/LICENSE">
+    <img src="https://img.shields.io/github/license/jeffminsungkim/nestjs-multer-extended.svg" alt="license" />
+  </a>
   <a href="https://circleci.com/gh/jeffminsungkim/nestjs-multer-extended" target="_blank">
-    <img src="https://img.shields.io/circleci/build/github/jeffminsungkim/nestjs-multer-extended/master" alt="CircleCI">
+    <img src="https://img.shields.io/circleci/build/github/jeffminsungkim/nestjs-multer-extended/master" alt="CircleCI" />
   </a>
   <a href="https://nestjs.com" target="_blank">
-    <img src="https://img.shields.io/badge/built%20with-NestJs-e0234e.svg" alt="Built with NestJS">
+    <img src="https://img.shields.io/badge/built%20with-NestJs-e0234e.svg" alt="Built with NestJS" />
   </a>
   <a href="https://github.com/nestjsplus/dyn-schematics" target="_blank">
-    <img src="https://img.shields.io/badge/Built%20with-%40nestjsplus%2Fdyn--schematics-brightgreen" alt="Built with @nestjsplus/dyn-schematics">
+    <img src="https://img.shields.io/badge/Built%20with-%40nestjsplus%2Fdyn--schematics-brightgreen" alt="Built with @nestjsplus/dyn-schematics" />
   </a>
   <a href="http://commitizen.github.io/cz-cli/" target="_blank">
-    <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen">
+    <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen"/>
   </a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome"/>
+  <a href="https://www.npmjs.com/package/nestjs-multer-extended">
+    <img src="https://img.shields.io/npm/dt/nestjs-multer-extended.svg" alt="Downloads" />
+  </a>
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome" />
   <a href="https://www.buymeacoffee.com/jeffminsungkim" target="_blank">
-    <img src="https://badgen.net/badge/Buy%20Me/A%20Coffee/orange?icon=kofi" alt="Buymeacoffee">
+    <img src="https://badgen.net/badge/Buy%20Me/A%20Coffee/orange?icon=kofi" alt="Buymeacoffee" />
   </a>
 </div>
 
@@ -266,7 +275,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://jeffminsungkim.com"><img src="https://avatars1.githubusercontent.com/u/6092023?v=4" width="100px;" alt=""/><br /><sub><b>Minsung Kim</b></sub></a><br /><a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jeffminsungkim" title="Code">💻</a> <a href="#maintenance-jeffminsungkim" title="Maintenance">🚧</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jeffminsungkim" title="Documentation">📖</a> <a href="#infra-jeffminsungkim" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-jeffminsungkim" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jeffminsungkim" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/jmcdo29"><img src="https://avatars3.githubusercontent.com/u/28268680?v=4" width="100px;" alt=""/><br /><sub><b>Jay McDoniel</b></sub></a><br /><a href="#ideas-jmcdo29" title="Ideas, Planning, & Feedback">🤔</a> <a href="#tool-jmcdo29" title="Tools">🔧</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/pulls?q=is%3Apr+reviewed-by%3Ajmcdo29" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jmcdo29" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/semin3276"><img src="https://avatars1.githubusercontent.com/u/60590414?v=4" width="100px;" alt=""/><br /><sub><b>semin3276</b></sub></a><br /><a href="#design-semin3276" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/semin3276"><img src="https://avatars1.githubusercontent.com/u/60590414?v=4" width="100px;" alt=""/><br /><sub><b>Semin Lee</b></sub></a><br /><a href="#design-semin3276" title="Design">🎨</a></td>
   </tr>
 </table>
 
