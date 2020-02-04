@@ -11,6 +11,7 @@
   ],
   "scripts": {
     "build": "rimraf -rf dist && tsc -p tsconfig.json",
+    "codecov": "codecov",
     "commit": "git-cz",
     "prepublish:npm": "npm run build",
     "publish:npm": "npm publish --access public",
@@ -62,6 +63,7 @@
     "@types/node": "13.7.0",
     "@types/sharp": "^0.24.0",
     "@types/supertest": "2.0.8",
+    "codecov": "^3.6.4",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "^3.1.0",
     "husky": "^4.2.1",

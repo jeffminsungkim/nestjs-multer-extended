@@ -53,6 +53,11 @@ jobs:
       - run:
           name: Integration tests
           command: npm run test:integration
+      - run:
+          name: Collect coverage
+          command: npm run codecov
+      - store_artifacts:
+          path: coverage
 
 workflows:
   version: 2
