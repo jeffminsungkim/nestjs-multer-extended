@@ -15,6 +15,5 @@
     "noImplicitAny": false,
     "skipLibCheck": true
   },
-  "include": ["lib/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts", "tests"]
+  "exclude": ["node_modules", "dist", "media", "**/*.spec.ts", "tests"]
 }
