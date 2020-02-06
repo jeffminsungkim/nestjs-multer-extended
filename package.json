@@ -10,17 +10,17 @@
     "dist"
   ],
   "scripts": {
-    "build": "rimraf -rf dist && tsc -p tsconfig.json",
-    "codecov": "codecov",
     "commit": "git-cz",
-    "prepublish:npm": "npm run build",
-    "publish:npm": "npm publish --access public",
-    "prepublish:next": "npm run build",
-    "publish:next": "npm publish --access public --tag next",
+    "coverage": "jest --runInBand --coverage --coverageReporters=text-lcov | coveralls",
+    "test:integration": "jest --runInBand --coverage",
     "format": "prettier --write \"lib/**/*.ts\"",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "lint:fix": "tslint --fix -c tslint.json 'lib/**/*{.ts,.tsx}'",
-    "test:integration": "jest --runInBand --coverage"
+    "build": "rimraf -rf dist && tsc -p tsconfig.json",
+    "prepublish:npm": "npm run build",
+    "publish:npm": "npm publish --access public",
+    "prepublish:next": "npm run build",
+    "publish:next": "npm publish --access public --tag next"
   },
   "repository": {
     "type": "git",
@@ -63,8 +63,8 @@
     "@types/node": "13.7.0",
     "@types/sharp": "0.24.0",
     "@types/supertest": "2.0.8",
-    "codecov": "3.6.4",
     "commitizen": "4.0.3",
+    "coveralls": "^3.0.9",
     "cz-conventional-changelog": "3.1.0",
     "husky": "4.2.1",
     "jest": "25.1.0",
