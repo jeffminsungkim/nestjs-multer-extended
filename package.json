@@ -64,7 +64,7 @@
     "@types/sharp": "0.24.0",
     "@types/supertest": "2.0.8",
     "commitizen": "4.0.3",
-    "coveralls": "^3.0.9",
+    "coveralls": "3.0.9",
     "cz-conventional-changelog": "3.1.0",
     "husky": "4.2.1",
     "jest": "25.1.0",
