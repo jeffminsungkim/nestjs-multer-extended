@@ -16,6 +16,9 @@
   <a href="https://circleci.com/gh/jeffminsungkim/nestjs-multer-extended" target="_blank">
     <img src="https://img.shields.io/circleci/build/github/jeffminsungkim/nestjs-multer-extended/master" alt="CircleCI" />
   </a>
+  <a href='https://coveralls.io/github/jeffminsungkim/nestjs-multer-extended?branch=master'>
+    <img src='https://coveralls.io/repos/github/jeffminsungkim/nestjs-multer-extended/badge.svg?branch=master' alt='Coverage Status' />
+  </a>
   <a href="https://nestjs.com" target="_blank">
     <img src="https://img.shields.io/badge/built%20with-NestJs-e0234e.svg" alt="Built with NestJS" />
   </a>
@@ -24,9 +27,6 @@
   </a>
   <a href="http://commitizen.github.io/cz-cli/" target="_blank">
     <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen"/>
-  </a>
-  <a href="https://www.npmjs.com/package/nestjs-multer-extended">
-    <img src="https://img.shields.io/npm/dt/nestjs-multer-extended.svg" alt="Downloads" />
   </a>
   <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome" />
   <a href="https://www.buymeacoffee.com/jeffminsungkim" target="_blank">
