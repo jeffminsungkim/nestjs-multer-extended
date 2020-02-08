@@ -28,10 +28,10 @@
   <a href="http://commitizen.github.io/cz-cli/" target="_blank">
     <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen"/>
   </a>
-  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome" />
-  <a href="https://www.buymeacoffee.com/jeffminsungkim" target="_blank">
-    <img src="https://badgen.net/badge/Buy%20Me/A%20Coffee/orange?icon=kofi" alt="Buymeacoffee" />
+  <a href="https://github.com/juliandavidmr/awesome-nestjs#components--libraries">
+    <img src="https://awesome.re/mentioned-badge.svg" alt="Awesome Nest" />
   </a>
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome" />
 </div>
 
 ## Features
