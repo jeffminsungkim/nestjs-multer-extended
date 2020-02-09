@@ -42,6 +42,18 @@ jobs:
           name: Build
           command: npm run build
 
+  unit_tests:
+    working_directory: ~/nestjs-multer-extended
+    docker:
+      - image: circleci/node:12
+    steps:
+      - checkout
+      - *restore-cache
+      - *install-deps
+      - run:
+          name: Unit tests
+          command: npm run test
+
   integration_tests:
     working_directory: ~/nestjs-multer-extended
     docker:
@@ -64,6 +76,9 @@ workflows:
   build-and-test:
     jobs:
       - build
+      - unit_tests:
+          requires:
+            - build
       - integration_tests:
           requires:
             - build

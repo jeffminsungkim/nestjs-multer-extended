@@ -1,8 +1,9 @@
 module.exports = {
+  setupFilesAfterEnv: ['jest-extended'],
   moduleFileExtensions: ['js', 'json', 'ts'],
-  rootDir: '.',
+  rootDir: './lib',
+  verbose: true,
   testRegex: '.spec.ts$',
   transform: { '^.+\\.(t|j)s$': 'ts-jest' },
-  coverageDirectory: '../coverage',
   testEnvironment: 'node',
 };
