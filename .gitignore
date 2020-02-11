@@ -13,6 +13,7 @@ npm-debug.log
 # tests
 /test
 /coverage
+/tests/coverage
 /.nyc_output
 
 # dist
