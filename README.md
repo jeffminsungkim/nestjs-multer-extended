@@ -17,7 +17,7 @@
     <img src="https://img.shields.io/circleci/build/github/jeffminsungkim/nestjs-multer-extended/master" alt="CircleCI" />
   </a>
   <a href='https://coveralls.io/github/jeffminsungkim/nestjs-multer-extended?branch=master'>
-    <img src='https://coveralls.io/repos/github/jeffminsungkim/nestjs-multer-extended/badge.svg?branch=master' alt='Coverage Status' />
+    <img src='https://coveralls.io/repos/github/jeffminsungkim/nestjs-multer-extended/badge.svg?branch=master&service=github' alt='Coverage Status' />
   </a>
   <a href="https://nestjs.com" target="_blank">
     <img src="https://img.shields.io/badge/built%20with-NestJs-e0234e.svg" alt="Built with NestJS" />
