@@ -5,13 +5,12 @@ import {
   MULTER_MODULE_OPTIONS,
 } from './constants';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
-import { MulterConfigService } from './multer-config.service';
+import { MulterConfigLoader } from './multer-config.loader';
 
 export const createMulterOptionsFactory = {
   provide: MULTER_MODULE_OPTIONS,
-  useFactory: async (multerConfigService: MulterConfigService) =>
-    multerConfigService.createMulterOptions(),
-  inject: [MulterConfigService],
+  useFactory: async (loader: MulterConfigLoader) => loader.createMulterOptions(),
+  inject: [MulterConfigLoader],
 };
 
 export function createMulterExtendedProviders(options: MulterExtendedS3Options) {
