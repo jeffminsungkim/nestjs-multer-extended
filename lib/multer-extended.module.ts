@@ -1,6 +1,6 @@
 import { Module, DynamicModule, Provider } from '@nestjs/common';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
-import { MulterConfigService } from './multer-config.service';
+import { MulterConfigLoader } from './multer-config.loader';
 import {
   createMulterExtendedProviders,
   createMulterOptionsFactory,
@@ -17,8 +17,8 @@ import {
 } from './interfaces';
 
 @Module({
-  providers: [MulterConfigService],
-  exports: [MulterConfigService],
+  providers: [MulterConfigLoader],
+  exports: [MulterConfigLoader],
 })
 export class MulterExtendedModule {
   public static register(options: MulterExtendedS3Options): DynamicModule {

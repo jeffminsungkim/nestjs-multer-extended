@@ -10,7 +10,7 @@ interface MulterS3ConfigService extends MulterOptionsFactory {
 }
 
 @Injectable()
-export class MulterConfigService implements MulterS3ConfigService {
+export class MulterConfigLoader implements MulterS3ConfigService {
   static DEFAULT_ACL = 'public-read';
   static DEFAULT_REGION = 'us-west-2';
   static DEFAULT_MAX_FILESIZE = 3145728;
@@ -21,11 +21,11 @@ export class MulterConfigService implements MulterS3ConfigService {
     AWS.config.update({
       accessKeyId: s3Options.accessKeyId,
       secretAccessKey: s3Options.secretAccessKey,
-      region: s3Options.region || MulterConfigService.DEFAULT_REGION,
+      region: s3Options.region || MulterConfigLoader.DEFAULT_REGION,
     });
 
     this.S3 = new AWS.S3();
-    this.logger = s3Options.logger || new Logger('NestMulterS3Service Options');
+    this.logger = s3Options.logger || new Logger(MulterConfigLoader.name);
     this.logger.log(JSON.stringify(s3Options));
   }
 
@@ -38,14 +38,14 @@ export class MulterConfigService implements MulterS3ConfigService {
       },
       s3: this.S3,
       Bucket: this.s3Options.bucket,
-      ACL: this.s3Options.acl || MulterConfigService.DEFAULT_ACL,
+      ACL: this.s3Options.acl || MulterConfigLoader.DEFAULT_ACL,
     });
 
     return {
       storage,
       fileFilter: this.filterImageFileExtension,
       limits: {
-        fileSize: +this.s3Options.fileSize || MulterConfigService.DEFAULT_MAX_FILESIZE,
+        fileSize: +this.s3Options.fileSize || MulterConfigLoader.DEFAULT_MAX_FILESIZE,
       },
     };
   }

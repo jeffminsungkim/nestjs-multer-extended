@@ -1,4 +1,4 @@
-export * from './multer-config.service';
+export * from './multer-config.loader';
 export * from './multer-extended.module';
 export * from './interceptors';
 export * from './interfaces';
