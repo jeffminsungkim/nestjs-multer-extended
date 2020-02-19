@@ -83,7 +83,7 @@
     "rxjs": "6.5.4",
     "sinon": "8.1.1",
     "supertest": "4.0.2",
-    "ts-jest": "25.2.0",
+    "ts-jest": "25.2.1",
     "ts-node": "8.6.2",
     "tsc-watch": "4.1.0",
     "tsconfig-paths": "3.9.0",
