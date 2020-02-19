@@ -81,7 +81,7 @@
     "pretty-quick": "2.0.1",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.4",
-    "sinon": "8.1.1",
+    "sinon": "9.0.0",
     "supertest": "4.0.2",
     "ts-jest": "25.2.1",
     "ts-node": "8.6.2",
