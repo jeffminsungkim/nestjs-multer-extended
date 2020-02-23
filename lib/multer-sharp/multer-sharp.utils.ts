@@ -17,6 +17,7 @@ export const transformException = (error: Error | undefined) => {
     case MulterExceptions.LIMIT_FIELD_COUNT:
     case MulterExceptions.LIMIT_UNEXPECTED_FILE:
     case MulterExceptions.LIMIT_PART_COUNT:
+    case MulterExceptions.INVALID_IMAGE_FILE_TYPE:
       return new BadRequestException(error.message);
   }
   return error;
@@ -48,8 +49,6 @@ const resolveImageStream = (key: string, value, size, imageStream: Sharp) => {
       if (isObject(size)) {
         imageStream = imageStream.resize(size.width, size.height, size.options);
       }
-      break;
-    default:
       break;
   }
 
