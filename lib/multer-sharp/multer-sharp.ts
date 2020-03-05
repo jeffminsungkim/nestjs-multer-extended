@@ -6,7 +6,7 @@ import { isFunction, isString } from '@nestjs/common/utils/shared.utils';
 import { Request } from 'express';
 import { from, Observable } from 'rxjs';
 import { map, mergeMap, toArray, first } from 'rxjs/operators';
-import { lookup, extension } from 'mime-types';
+import { lookup } from 'mime-types';
 import { S3StorageOptions, S3Storage } from './interfaces/s3-storage.interface';
 import { SharpOptions, Size, ExtendSize } from './interfaces/sharp-options.interface';
 import {
@@ -15,7 +15,6 @@ import {
   transformImage,
   isOriginalSuffix,
 } from './multer-sharp.utils';
-import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 
 export interface EventStream {
   stream: NodeJS.ReadableStream & Sharp;
@@ -75,10 +74,6 @@ export class MulterSharp implements StorageEngine, S3Storage {
         if (err) {
           callback(err);
           return;
-        }
-
-        if (storageOpts.randomFilename) {
-          file.originalname = `${randomStringGenerator()}.${extension(mimetype)}`;
         }
 
         const { originalname } = file;

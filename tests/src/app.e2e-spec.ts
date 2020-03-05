@@ -51,15 +51,6 @@ describe('AppModule', () => {
       expect(res.body.key).toEqual(`${dynamicPath}/smile.jpg`);
     });
 
-    it(`should upload an image with random filename`, async () => {
-      const res = await request(app.getHttpServer())
-        .post(`/image-upload/with-random-filename`)
-        .set('Content-Type', 'multipart/form-data')
-        .attach('file', path.resolve(__dirname, 'data/smile.jpg'));
-
-      expect(res.status).toEqual(201);
-    });
-
     it(`should not upload non image format`, async () => {
       const res = await request(app.getHttpServer())
         .post(`/image-upload/non-image-file`)
