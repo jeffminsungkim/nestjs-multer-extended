@@ -16,6 +16,12 @@ export class ImageUploadController {
     return file;
   }
 
+  @Post('with-random-filename')
+  @UseInterceptors(AmazonS3FileInterceptor('file', { randomFilename: true }))
+  async uploadImageWithRandomFilenameKeyOption(@UploadedFile() file: any): Promise<any> {
+    return file;
+  }
+
   @Post('non-image-file')
   @UseInterceptors(AmazonS3FileInterceptor('file'))
   async uploadNonImageFile(@UploadedFile() file: any): Promise<void> {}
