@@ -147,7 +147,21 @@ uploadFile(@UploadedFile() file) {
 
 In this example, `uploadFile()` method will upload a file in `${basePath}/aec16138-a75a-4961-b8c1-8e803b6bf2cf/${originalname}`.
 
-If you want to resize the file before the upload, you can pass on the resize property as follows:
+You may want to store the file with an arbitrary name instead of the original file name. You can do this by passing the `randomFilename` property attribute set to `true` as follows:
+
+```typescript
+@Post('upload')
+@UseInterceptors(
+  AmazonS3FileInterceptor('file', {
+    randomFilename: true
+  }),
+)
+uploadFile(@UploadedFile() file) {
+  console.log(file);
+}
+```
+
+If you want to resize the file before the upload, you can pass on the `resize` property as follows:
 
 ```typescript
 @Post('upload')
@@ -280,7 +294,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://jeffminsungkim.com"><img src="https://avatars1.githubusercontent.com/u/6092023?v=4" width="100px;" alt=""/><br /><sub><b>Minsung Kim</b></sub></a><br /><a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jeffminsungkim" title="Code">💻</a> <a href="#maintenance-jeffminsungkim" title="Maintenance">🚧</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jeffminsungkim" title="Documentation">📖</a> <a href="#infra-jeffminsungkim" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#ideas-jeffminsungkim" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jeffminsungkim" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/jmcdo29"><img src="https://avatars3.githubusercontent.com/u/28268680?v=4" width="100px;" alt=""/><br /><sub><b>Jay McDoniel</b></sub></a><br /><a href="#ideas-jmcdo29" title="Ideas, Planning, & Feedback">🤔</a> <a href="#tool-jmcdo29" title="Tools">🔧</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/pulls?q=is%3Apr+reviewed-by%3Ajmcdo29" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=jmcdo29" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/semin3276"><img src="https://avatars1.githubusercontent.com/u/60590414?v=4" width="100px;" alt=""/><br /><sub><b>semin3276</b></sub></a><br /><a href="#design-semin3276" title="Design">🎨</a></td>
-    <td align="center"><a href="https://www.rene-volbach.de"><img src="https://avatars0.githubusercontent.com/u/18092644?v=4" width="100px;" alt=""/><br /><sub><b>René Volbach</b></sub></a><br /><a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=volbrene" title="Code">💻</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=volbrene" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/volbrene"><img src="https://avatars0.githubusercontent.com/u/18092644?v=4" width="100px;" alt=""/><br /><sub><b>René Volbach</b></sub></a><br /><a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=volbrene" title="Code">💻</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=volbrene" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
