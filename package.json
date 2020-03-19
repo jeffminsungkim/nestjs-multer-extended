@@ -63,7 +63,7 @@
     "@types/jest": "25.1.4",
     "@types/jest-when": "2.7.0",
     "@types/multer": "1.4.2",
-    "@types/node": "13.9.1",
+    "@types/node": "13.9.2",
     "@types/sharp": "0.24.0",
     "@types/sinon": "7.5.2",
     "@types/supertest": "2.0.8",
