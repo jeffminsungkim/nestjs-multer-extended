@@ -74,7 +74,7 @@
     "husky": "4.2.3",
     "jest": "25.2.4",
     "jest-extended": "0.11.5",
-    "jest-when": "2.7.0",
+    "jest-when": "2.7.1",
     "lint-staged": "10.0.10",
     "nestjs-config": "1.4.5",
     "prettier": "2.0.2",
