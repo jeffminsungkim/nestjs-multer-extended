@@ -2,6 +2,10 @@ import { LoggerService } from '@nestjs/common';
 
 export interface MulterExtendedS3Options {
   /**
+   * AWS End Point
+   */
+  readonly endpoint?: string;
+  /**
    * AWS Access Key ID
    */
   readonly accessKeyId: string;
