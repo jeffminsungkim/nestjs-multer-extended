@@ -9,6 +9,7 @@ export interface MultipleSizeOptions {
   suffix: string;
   width?: number;
   height?: number;
+  options?: any;
 }
 
 export interface MulterExtendedOptions extends Pick<MulterOptions, 'fileFilter' | 'limits'> {
