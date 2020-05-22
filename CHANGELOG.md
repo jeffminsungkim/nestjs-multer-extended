@@ -1,3 +1,12 @@
+<a name="1.1.1"></a>
+
+## [1.1.1](https://github.com/jeffminsungkim/nestjs-multer-extended/compare/1.1.0...1.1.1) (2020-05-22)
+
+### Bug Fixes
+
+- **deps:** update dependency sharp to ^0.25.0
+  ([054d334](https://github.com/jeffminsungkim/nestjs-multer-extended/commit/054d334))
+
 <a name="1.1.0"></a>
 
 # [1.1.0](https://github.com/jeffminsungkim/nestjs-multer-extended/compare/v1.0.2...v1.1.0) (2020-03-06)
