@@ -49,6 +49,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "gimyboya",
+      "name": "gimyboya",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/14952013?v=4",
+      "profile": "http://grainer.io",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
