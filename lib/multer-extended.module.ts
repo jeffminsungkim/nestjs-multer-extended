@@ -32,7 +32,7 @@ export class MulterExtendedModule {
   public static registerAsync(options: MulterExtendedS3AsyncOptions): DynamicModule {
     return {
       module: MulterExtendedModule,
-      imports: options.imports || [],
+      imports: options.imports,
       providers: [
         ...this.createProviders(options),
         {
