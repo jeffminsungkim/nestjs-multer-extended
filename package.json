@@ -65,7 +65,7 @@
     "@types/multer": "1.4.3",
     "@types/node": "13.13.5",
     "@types/sharp": "0.25.0",
-    "@types/sinon": "9.0.1",
+    "@types/sinon": "9.0.4",
     "@types/supertest": "2.0.9",
     "commitizen": "4.1.2",
     "conventional-changelog-cli": "2.0.34",
