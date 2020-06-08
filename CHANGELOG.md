@@ -1,3 +1,12 @@
+<a name="1.2.0"></a>
+
+# [1.2.0](https://github.com/jeffminsungkim/nestjs-multer-extended/compare/1.1.1...1.2.0) (2020-06-08)
+
+### Features
+
+- **s3options and configloader:** support digitalocean spaces
+  ([09adacb](https://github.com/jeffminsungkim/nestjs-multer-extended/commit/09adacb))
+
 <a name="1.1.1"></a>
 
 ## [1.1.1](https://github.com/jeffminsungkim/nestjs-multer-extended/compare/1.1.0...1.1.1) (2020-05-22)
