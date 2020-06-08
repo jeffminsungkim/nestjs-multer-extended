@@ -28,6 +28,10 @@ export interface MulterExtendedS3Options {
    * @see https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#canned-acl
    */
   readonly acl?: string;
+  /*
+   * AWS Endpoint
+   */
+  readonly endpoint?: string;
   /**
    * Optional parameter for the file size
    * default: 3MB
