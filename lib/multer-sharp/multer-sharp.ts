@@ -117,22 +117,22 @@ export class MulterSharp implements StorageEngine, S3Storage {
 
       sizes$
         .pipe(
-          map(size => {
+          map((size) => {
             const resizedStream = transformImage(sharpOpts, size);
 
             if (isOriginalSuffix(size.suffix)) {
-              size.Body = stream.pipe(sharp());
+              size.Body = stream.pipe(sharp({ failOnError: false }));
             } else {
               size.Body = stream.pipe(resizedStream);
             }
             return size;
           }),
-          mergeMap(size => {
+          mergeMap((size) => {
             const sharpStream = size.Body;
             const sharpPromise = sharpStream.toBuffer({ resolveWithObject: true });
 
             return from(
-              sharpPromise.then(result => {
+              sharpPromise.then((result) => {
                 return {
                   ...size,
                   ...result.info,
@@ -142,7 +142,7 @@ export class MulterSharp implements StorageEngine, S3Storage {
               }),
             );
           }),
-          mergeMap(size => {
+          mergeMap((size) => {
             const { Body, ContentType } = size;
             const newParams = {
               ...params,
@@ -153,14 +153,14 @@ export class MulterSharp implements StorageEngine, S3Storage {
             const upload = storageOpts.s3.upload(newParams);
             const currentSize = { [size.suffix]: 0 };
 
-            upload.on('httpUploadProgress', event => {
+            upload.on('httpUploadProgress', (event) => {
               if (event.total) {
                 currentSize[size.suffix] = event.total;
               }
             });
 
             const upload$ = from(
-              upload.promise().then(result => {
+              upload.promise().then((result) => {
                 // tslint:disable-next-line
                 const { Body, ...rest } = size;
                 return {
@@ -175,7 +175,7 @@ export class MulterSharp implements StorageEngine, S3Storage {
           toArray(),
           first(),
         )
-        .subscribe(response => {
+        .subscribe((response) => {
           const multipleUploadedFiles = response.reduce((acc, uploadedFile) => {
             // tslint:disable-next-line
             const { suffix, ContentType, currentSize, ...details } = uploadedFile;
@@ -203,14 +203,14 @@ export class MulterSharp implements StorageEngine, S3Storage {
       meta$
         .pipe(
           first(),
-          map(metadata => {
+          map((metadata) => {
             newParams.ContentType = storageOpts.ContentType || metadata.info.format;
             return metadata;
           }),
-          mergeMap(metadata => {
+          mergeMap((metadata) => {
             const upload = storageOpts.s3.upload(newParams);
 
-            upload.on('httpUploadProgress', eventProgress => {
+            upload.on('httpUploadProgress', (eventProgress) => {
               if (eventProgress.total) {
                 currentSize = eventProgress.total;
               }
@@ -218,12 +218,12 @@ export class MulterSharp implements StorageEngine, S3Storage {
 
             const data = upload
               .promise()
-              .then(uploadedData => ({ ...uploadedData, ...metadata.info }));
+              .then((uploadedData) => ({ ...uploadedData, ...metadata.info }));
             const upload$ = from(data);
             return upload$;
           }),
         )
-        .subscribe(response => {
+        .subscribe((response) => {
           const { size, format, channels, ...details } = response;
           const data = {
             ACL,
@@ -254,13 +254,13 @@ export class MulterSharp implements StorageEngine, S3Storage {
     const upload = storageOpts.s3.upload(params);
     let currentSize = 0;
 
-    upload.on('httpUploadProgress', event => {
+    upload.on('httpUploadProgress', (event) => {
       if (event.total) {
         currentSize = event.total;
       }
     });
 
-    upload.promise().then(uploadedData => {
+    upload.promise().then((uploadedData) => {
       const data = {
         size: currentSize,
         ACL: storageOpts.ACL,
