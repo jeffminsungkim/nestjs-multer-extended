@@ -121,7 +121,7 @@ export class MulterSharp implements StorageEngine, S3Storage {
             const resizedStream = transformImage(sharpOpts, size);
 
             if (isOriginalSuffix(size.suffix)) {
-              size.Body = stream.pipe(sharp());
+              size.Body = stream.pipe(sharp({ failOnError: false }));
             } else {
               size.Body = stream.pipe(resizedStream);
             }
