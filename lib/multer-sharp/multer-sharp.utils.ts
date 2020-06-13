@@ -35,12 +35,12 @@ export const transformImage = (options: SharpOptions, size: ResizeOption): Sharp
 };
 
 export const getSharpOptionProps = (storageOpts: S3StorageOptions) => {
-  const prop = Object.keys(storageOpts).filter((p) => p === 'resize' || p === 'resizeMultiple')[0];
+  const prop = Object.keys(storageOpts).filter(p => p === 'resize' || p === 'resizeMultiple')[0];
   return storageOpts[prop];
 };
 
 export const isOriginalSuffix = (suffix: string) => suffix === 'original';
-const isObject = (obj) => typeof obj === 'object' && obj !== null;
+const isObject = obj => typeof obj === 'object' && obj !== null;
 
 const resolveImageStream = (key: string, value, size, imageStream: Sharp) => {
   switch (key) {
