@@ -77,15 +77,28 @@ export class MulterSharp implements StorageEngine, S3Storage {
           return;
         }
 
+        let { originalname } = file;
+
         if (storageOpts.randomFilename) {
-          file.originalname = `${randomStringGenerator()}.${extension(mimetype)}`;
+          originalname = `${randomStringGenerator()}.${extension(mimetype)}`;
         }
 
-        const { originalname } = file;
+        const routeParams = Object.keys(req.params);
 
-        params.Key = storageOpts.dynamicPath
-          ? `${Key}/${storageOpts.dynamicPath}/${originalname}`
-          : `${Key}/${originalname}`;
+        if (routeParams.length > 0) {
+          if (routeParams.length === storageOpts.dynamicPath.length) {
+            if (routeParams.every((param, i) => param === storageOpts.dynamicPath[i])) {
+              const paramDir = Object.values(req.params).join('/');
+              params.Key = `${Key}/${paramDir}/${originalname}`;
+            }
+          } else {
+            params.Key = `${Key}/${req.params[storageOpts.dynamicPath as string]}/${originalname}`;
+          }
+        } else {
+          params.Key = storageOpts.dynamicPath
+            ? `${Key}/${storageOpts.dynamicPath}/${originalname}`
+            : `${Key}/${originalname}`;
+        }
 
         mimetype.includes('image')
           ? this.uploadImageFileToS3(params, file, callback)
@@ -117,7 +130,7 @@ export class MulterSharp implements StorageEngine, S3Storage {
 
       sizes$
         .pipe(
-          map(size => {
+          map((size) => {
             const resizedStream = transformImage(sharpOpts, size);
 
             if (isOriginalSuffix(size.suffix)) {
@@ -127,12 +140,12 @@ export class MulterSharp implements StorageEngine, S3Storage {
             }
             return size;
           }),
-          mergeMap(size => {
+          mergeMap((size) => {
             const sharpStream = size.Body;
             const sharpPromise = sharpStream.toBuffer({ resolveWithObject: true });
 
             return from(
-              sharpPromise.then(result => {
+              sharpPromise.then((result) => {
                 return {
                   ...size,
                   ...result.info,
@@ -142,7 +155,7 @@ export class MulterSharp implements StorageEngine, S3Storage {
               }),
             );
           }),
-          mergeMap(size => {
+          mergeMap((size) => {
             const { Body, ContentType } = size;
             const newParams = {
               ...params,
@@ -153,14 +166,14 @@ export class MulterSharp implements StorageEngine, S3Storage {
             const upload = storageOpts.s3.upload(newParams);
             const currentSize = { [size.suffix]: 0 };
 
-            upload.on('httpUploadProgress', event => {
+            upload.on('httpUploadProgress', (event) => {
               if (event.total) {
                 currentSize[size.suffix] = event.total;
               }
             });
 
             const upload$ = from(
-              upload.promise().then(result => {
+              upload.promise().then((result) => {
                 // tslint:disable-next-line
                 const { Body, ...rest } = size;
                 return {
@@ -175,7 +188,7 @@ export class MulterSharp implements StorageEngine, S3Storage {
           toArray(),
           first(),
         )
-        .subscribe(response => {
+        .subscribe((response) => {
           const multipleUploadedFiles = response.reduce((acc, uploadedFile) => {
             // tslint:disable-next-line
             const { suffix, ContentType, currentSize, ...details } = uploadedFile;
@@ -203,14 +216,14 @@ export class MulterSharp implements StorageEngine, S3Storage {
       meta$
         .pipe(
           first(),
-          map(metadata => {
+          map((metadata) => {
             newParams.ContentType = storageOpts.ContentType || metadata.info.format;
             return metadata;
           }),
-          mergeMap(metadata => {
+          mergeMap((metadata) => {
             const upload = storageOpts.s3.upload(newParams);
 
-            upload.on('httpUploadProgress', eventProgress => {
+            upload.on('httpUploadProgress', (eventProgress) => {
               if (eventProgress.total) {
                 currentSize = eventProgress.total;
               }
@@ -218,12 +231,12 @@ export class MulterSharp implements StorageEngine, S3Storage {
 
             const data = upload
               .promise()
-              .then(uploadedData => ({ ...uploadedData, ...metadata.info }));
+              .then((uploadedData) => ({ ...uploadedData, ...metadata.info }));
             const upload$ = from(data);
             return upload$;
           }),
         )
-        .subscribe(response => {
+        .subscribe((response) => {
           const { size, format, channels, ...details } = response;
           const data = {
             ACL,
@@ -254,13 +267,13 @@ export class MulterSharp implements StorageEngine, S3Storage {
     const upload = storageOpts.s3.upload(params);
     let currentSize = 0;
 
-    upload.on('httpUploadProgress', event => {
+    upload.on('httpUploadProgress', (event) => {
       if (event.total) {
         currentSize = event.total;
       }
     });
 
-    upload.promise().then(uploadedData => {
+    upload.promise().then((uploadedData) => {
       const data = {
         size: currentSize,
         ACL: storageOpts.ACL,

@@ -12,7 +12,7 @@ export interface MultipleSizeOptions {
 }
 
 export interface MulterExtendedOptions extends Pick<MulterOptions, 'fileFilter' | 'limits'> {
-  dynamicPath?: string;
+  dynamicPath?: string | string[];
   randomFilename?: boolean;
   resize?: ResizeOptions;
   resizeMultiple?: MultipleSizeOptions[];
