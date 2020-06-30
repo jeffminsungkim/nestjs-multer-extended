@@ -109,7 +109,7 @@ export class AppModule {}
 
 To upload a single file, simply tie the `AmazonS3FileInterceptor()` interceptor to the route handler and extract `file` from the request using the `@UploadedFile()` decorator.
 
-```typescript
+```javascript
 import { Controller, Post, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { AmazonS3FileInterceptor } from 'nestjs-multer-extended';
 
@@ -183,7 +183,7 @@ uploadFile(@UploadedFile() file) {
 uploadFile(@UploadedFile() file) {
   // POST /user/jeffminsungkim/team/8987
   console.log(file);
-   // => YOUR-BASE-PATH/jeffminsungkim/8987/filename.png
+  // => YOUR-BASE-PATH/jeffminsungkim/8987/filename.png
 }
 ```
 
