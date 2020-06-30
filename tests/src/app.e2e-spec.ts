@@ -125,6 +125,26 @@ describe('AppModule', () => {
       expect(res.body.key).toEqual(`${dynamicPath}/crying.jpg`);
     });
 
+    it(`should upload an image under the first path parameter :key(abcd1234)`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/user-profile-image-upload/use-path-param-as-a-key/abcd1234`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/crying.jpg'));
+
+      expect(res.status).toEqual(201);
+      expect(res.body.key).toEqual(`user-profile-image-upload-module/abcd1234/crying.jpg`);
+    });
+
+    it(`should upload an image under :key(abcd1234)/:id(msk)`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/user-profile-image-upload/use-path-param-as-a-key/abcd1234/user/msk`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/crying.jpg'));
+
+      expect(res.status).toEqual(201);
+      expect(res.body.key).toEqual(`user-profile-image-upload-module/abcd1234/msk/crying.jpg`);
+    });
+
     it(`should upload both an original and a thumbnail image`, async () => {
       const res = await request(app.getHttpServer())
         .post(`/user-profile-image-upload/create-thumbnail-with-custom-options`)

@@ -16,6 +16,18 @@ export class UserProfileImageUploadController {
     return file;
   }
 
+  @Post('use-path-param-as-a-key/:key')
+  @UseInterceptors(AmazonS3FileInterceptor('file', { dynamicPath: 'key' }))
+  async uploadImageWithPathParamKey(@UploadedFile() file: any): Promise<any> {
+    return file;
+  }
+
+  @Post('use-path-param-as-a-key/:key/user/:id')
+  @UseInterceptors(AmazonS3FileInterceptor('file', { dynamicPath: ['key', 'id'] }))
+  async uploadImageWithMultiplePathParamKeys(@UploadedFile() file: any): Promise<any> {
+    return file;
+  }
+
   @Post('create-thumbnail-with-custom-options')
   @UseInterceptors(
     AmazonS3FileInterceptor('file', {
