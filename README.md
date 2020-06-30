@@ -133,7 +133,7 @@ The `AmazonS3FileInterceptor()` decorator takes two arguments:
 
 What if you wanted to upload a file in a different location under the base path? Thankfully, `AmazonS3FileInterceptor()` decorator accepts `dynamicPath` property as a second argument option. Pass the string path as shown below:
 
-```typescript
+```javascript
 @Post('upload')
 @UseInterceptors(
   AmazonS3FileInterceptor('file', {
@@ -147,9 +147,53 @@ uploadFile(@UploadedFile() file) {
 
 In this example, `uploadFile()` method will upload a file in `${basePath}/aec16138-a75a-4961-b8c1-8e803b6bf2cf/${originalname}`.
 
+Route parameters can also be used as a key. For example, if you have the route `/user/:name`, then pass the `name` into the `dynamicPath` property as a value.
+
+```javascript
+@Post('user/:name')
+@UseInterceptors(
+  AmazonS3FileInterceptor('file', {
+    dynamicPath: 'name'
+  }),
+)
+uploadFile(@UploadedFile() file) {
+  // POST /user/jeffminsungkim
+  console.log(file);
+  // => YOUR-BASE-PATH/jeffminsungkim/filename.png
+}
+
+@Post('user/:name/team/:no')
+@UseInterceptors(
+  AmazonS3FileInterceptor('file', {
+    dynamicPath: 'no'
+  }),
+)
+uploadFile(@UploadedFile() file) {
+  // POST /user/jeffminsungkim/team/8987
+  console.log(file);
+  // => YOUR-BASE-PATH/8987/filename.png
+}
+
+@Post('user/:name/team/:no')
+@UseInterceptors(
+  AmazonS3FileInterceptor('file', {
+    dynamicPath: ['name', 'no']
+  }),
+)
+uploadFile(@UploadedFile() file) {
+  // POST /user/jeffminsungkim/team/8987
+  console.log(file);
+   // => YOUR-BASE-PATH/jeffminsungkim/8987/filename.png
+}
+```
+
+> **Note**: The route name must be matched with the order of `dynamicPath` property value and its name.
+
+&nbsp;
+
 You may want to store the file with an arbitrary name instead of the original file name. You can do this by passing the `randomFilename` property attribute set to `true` as follows:
 
-```typescript
+```javascript
 @Post('upload')
 @UseInterceptors(
   AmazonS3FileInterceptor('file', {
@@ -163,7 +207,7 @@ uploadFile(@UploadedFile() file) {
 
 If you want to resize the file before the upload, you can pass on the `resize` property as follows:
 
-```typescript
+```javascript
 @Post('upload')
 @UseInterceptors(
   AmazonS3FileInterceptor('file', {
@@ -177,7 +221,7 @@ uploadFile(@UploadedFile() file) {
 
 You can pass an array of size options to resize a single image into different sizes as follows:
 
-```typescript
+```javascript
 @Post('upload')
 @UseInterceptors(
   AmazonS3FileInterceptor('file', {
@@ -195,7 +239,7 @@ uploadFile(@UploadedFile() file) {
 
 Not only creating a thumbnail image but also willing to change the file size limit, you can pass the properties as follows:
 
-```typescript
+```javascript
 @Post('upload')
 @UseInterceptors(
     AmazonS3FileInterceptor('file', {
