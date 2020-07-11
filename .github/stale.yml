@@ -4,11 +4,15 @@ daysUntilStale: 28
 daysUntilClose: 15
 # Issues with these labels will never be considered stale
 exemptLabels:
-  - 📌 pin
-  - Blocked: Needs Review
-  - Help: Good First Issue
+  - good first issue 👍
+  - "status: wip ⚡️"
+  - "type: bug 🐛"
+  - "type: discussion 🔥"
+  - "type: future plan 🧐"
+  - "type: help wanted 🙂"
+  - "type: potential issue 🥶"
 # Label to use when marking an issue as stale
-staleLabel: "Type: Stale"
+staleLabel: "type: stale"
 # Comment to post when marking an issue as stale. Set to `false` to disable
 markComment: >
   Hello 👋, to help manage issues we automatically close stale issues. 
