@@ -78,7 +78,7 @@
     "lint-staged": "10.2.11",
     "nestjs-config": "1.4.7",
     "prettier": "2.0.5",
-    "pretty-quick": "2.0.1",
+    "pretty-quick": "3.0.0",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.6.2",
     "sinon": "9.0.3",
