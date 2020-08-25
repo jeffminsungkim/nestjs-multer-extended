@@ -75,7 +75,7 @@
     "jest": "26.4.2",
     "jest-extended": "0.11.5",
     "jest-when": "2.7.2",
-    "lint-staged": "10.2.12",
+    "lint-staged": "10.2.13",
     "nestjs-config": "1.4.7",
     "prettier": "2.1.0",
     "pretty-quick": "3.0.0",
