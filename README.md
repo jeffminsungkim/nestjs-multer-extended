@@ -187,8 +187,6 @@ uploadFile(@UploadedFile() file) {
 }
 ```
 
-> **Note**: The route name must be matched with the order of `dynamicPath` property value and its name.
-
 &nbsp;
 
 You may want to store the file with an arbitrary name instead of the original file name. You can do this by passing the `randomFilename` property attribute set to `true` as follows:

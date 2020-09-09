@@ -85,14 +85,17 @@ export class MulterSharp implements StorageEngine, S3Storage {
 
         const routeParams = Object.keys(req.params);
 
-        if (routeParams.length > 0) {
-          if (routeParams.length === storageOpts.dynamicPath.length) {
-            if (routeParams.every((param, i) => param === storageOpts.dynamicPath[i])) {
-              const paramDir = Object.values(req.params).join('/');
-              params.Key = `${Key}/${paramDir}/${originalname}`;
-            }
+        if (routeParams.length > 0 && storageOpts.dynamicPath) {
+          if (typeof storageOpts.dynamicPath === 'string') {
+            params.Key = routeParams.includes(storageOpts.dynamicPath)
+              ? `${Key}/${req.params[storageOpts.dynamicPath]}/${originalname}`
+              : `${Key}/${storageOpts.dynamicPath}/${originalname}`;
           } else {
-            params.Key = `${Key}/${req.params[storageOpts.dynamicPath as string]}/${originalname}`;
+            const paramDir = [];
+            storageOpts.dynamicPath.forEach((pathSegment) => {
+              paramDir.push(routeParams.includes(pathSegment) ? req.params[pathSegment] : pathSegment);
+            });
+            params.Key = `${Key}/${paramDir.join('/')}/${originalname}`;
           }
         } else {
           params.Key = storageOpts.dynamicPath
