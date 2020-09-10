@@ -68,6 +68,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "michaelwolz",
+      "name": "Michael Wolz",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7479806?v=4",
+      "profile": "http://michaelwolz.de",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
