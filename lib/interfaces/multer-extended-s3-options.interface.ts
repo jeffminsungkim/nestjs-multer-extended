@@ -1,5 +1,6 @@
 import { LoggerService } from '@nestjs/common';
-import { GlobalConfigInstance } from 'aws-sdk/lib/config';
+import { APIVersions, ConfigurationOptions } from 'aws-sdk/lib/config';
+import { ConfigurationServicePlaceholders } from 'aws-sdk/lib/config_service_placeholders';
 import AWS from 'aws-sdk';
 
 export interface MulterExtendedS3Options {
@@ -22,7 +23,9 @@ export interface MulterExtendedS3Options {
   /**
    * AWS Config
    */
-  readonly awsConfig?: GlobalConfigInstance;
+  readonly awsConfig?: ConfigurationOptions &
+    ConfigurationServicePlaceholders &
+    APIVersions & { [key: string]: any };
   /**
    * S3 Config
    */
