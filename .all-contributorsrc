@@ -78,6 +78,16 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "visurel",
+      "name": "visurel",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/7209649?v=4",
+      "profile": "https://visurel.com",
+      "contributions": [
+        "code",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
