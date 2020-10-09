@@ -1,7 +1,7 @@
 import AWS from 'aws-sdk';
 import { AmazonS3Storage, ImageFileExtensions, MulterExceptions } from './multer-sharp';
-import { Injectable, Inject, Logger, BadRequestException, LoggerService } from '@nestjs/common';
-import { MulterOptionsFactory, MulterModuleOptions } from '@nestjs/platform-express';
+import { BadRequestException, Inject, Injectable, Logger, LoggerService } from '@nestjs/common';
+import { MulterModuleOptions, MulterOptionsFactory } from '@nestjs/platform-express';
 import { MULTER_EXTENDED_S3_OPTIONS } from './constants';
 import { MulterExtendedS3Options } from './interfaces';
 
@@ -22,10 +22,12 @@ export class MulterConfigLoader implements MulterS3ConfigService {
       accessKeyId: s3Options.accessKeyId,
       secretAccessKey: s3Options.secretAccessKey,
       region: s3Options.region || MulterConfigLoader.DEFAULT_REGION,
+      ...s3Options.awsConfig,
     });
 
     this.S3 = new AWS.S3({
       endpoint: s3Options.endpoint,
+      ...s3Options.s3Config,
     });
     this.logger = s3Options.logger || new Logger(MulterConfigLoader.name);
     this.logger.log(JSON.stringify(s3Options));

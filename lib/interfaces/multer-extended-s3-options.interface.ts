@@ -1,19 +1,35 @@
 import { LoggerService } from '@nestjs/common';
+import { APIVersions, ConfigurationOptions } from 'aws-sdk/lib/config';
+import { ConfigurationServicePlaceholders } from 'aws-sdk/lib/config_service_placeholders';
+import AWS from 'aws-sdk';
 
 export interface MulterExtendedS3Options {
   /**
    * AWS Access Key ID
+   * @deprecated v2 use awsConfig instead
    */
-  readonly accessKeyId: string;
+  readonly accessKeyId?: string;
   /**
    * AWS Secret Access Key
+   * @deprecated v2 use awsConfig instead
    */
-  readonly secretAccessKey: string;
+  readonly secretAccessKey?: string;
   /**
    * Default region name
    * default: us-west-2
+   * @deprecated v2 use awsConfig instead
    */
-  readonly region: string;
+  readonly region?: string;
+  /**
+   * AWS Config
+   */
+  readonly awsConfig?: ConfigurationOptions &
+    ConfigurationServicePlaceholders &
+    APIVersions & { [key: string]: any };
+  /**
+   * S3 Config
+   */
+  readonly s3Config?: AWS.S3.Types.ClientConfiguration;
   /**
    * The name of Amazon S3 bucket
    */
@@ -30,6 +46,7 @@ export interface MulterExtendedS3Options {
   readonly acl?: string;
   /**
    * AWS Endpoint
+   * @deprecated v2 use s3Config instead
    */
   readonly endpoint?: string;
   /**
