@@ -361,6 +361,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/dineshsalunke"><img src="https://avatars2.githubusercontent.com/u/52815633?v=4" width="100px;" alt=""/><br /><sub><b>dineshsalunke</b></sub></a><br /><a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=dineshsalunke" title="Code">💻</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=dineshsalunke" title="Documentation">📖</a></td>
     <td align="center"><a href="http://michaelwolz.de"><img src="https://avatars3.githubusercontent.com/u/7479806?v=4" width="100px;" alt=""/><br /><sub><b>Michael Wolz</b></sub></a><br /><a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=michaelwolz" title="Code">💻</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=michaelwolz" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://visurel.com"><img src="https://avatars3.githubusercontent.com/u/7209649?v=4" width="100px;" alt=""/><br /><sub><b>visurel</b></sub></a><br /><a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=visurel" title="Code">💻</a> <a href="https://github.com/jeffminsungkim/nestjs-multer-extended/commits?author=visurel" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->
