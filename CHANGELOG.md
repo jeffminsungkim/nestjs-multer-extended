@@ -1,3 +1,14 @@
+<a name="1.4.1"></a>
+## [1.4.1](https://github.com/jeffminsungkim/nestjs-multer-extended/compare/1.3.1...1.4.1) (2020-10-12)
+
+
+### Features
+
+* **config:** allow to pass all config options for AWS and S3 instances ([3a34c55](https://github.com/jeffminsungkim/nestjs-multer-extended/commit/3a34c55))
+* **config:** update README, correct AWS Instance option typings ([c7548ea](https://github.com/jeffminsungkim/nestjs-multer-extended/commit/c7548ea))
+
+
+
 # [1.4.0](https://github.com/jeffminsungkim/nestjs-multer-extended/compare/1.3.1...1.4.0) (2020-10-11)
 
 
