@@ -65,7 +65,7 @@
     "@types/jest-when": "2.7.2",
     "@types/mime-types": "2.1.0",
     "@types/multer": "1.4.5",
-    "@types/node": "13.13.50",
+    "@types/node": "13.13.51",
     "@types/sharp": "0.26.1",
     "@types/sinon": "10.0.0",
     "@types/supertest": "2.0.11",
