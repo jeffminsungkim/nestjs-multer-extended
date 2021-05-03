@@ -88,6 +88,16 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "newbish",
+      "name": "Keith Kikta",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1214744?v=4",
+      "profile": "http://tevpro.com",
+      "contributions": [
+        "maintenance",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
