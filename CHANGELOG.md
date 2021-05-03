@@ -1,3 +1,7 @@
+## [1.4.2](https://github.com/jeffminsungkim/nestjs-multer-extended/compare/1.4.1...1.4.2) (2021-05-03)
+
+
+
 <a name="1.4.1"></a>
 
 ## [1.4.1](https://github.com/jeffminsungkim/nestjs-multer-extended/compare/1.3.1...1.4.1) (2020-10-12)
