@@ -64,7 +64,7 @@
     "@types/jest": "26.0.24",
     "@types/jest-when": "2.7.3",
     "@types/mime-types": "2.1.0",
-    "@types/multer": "1.4.6",
+    "@types/multer": "1.4.7",
     "@types/node": "14.17.4",
     "@types/sharp": "0.26.1",
     "@types/sinon": "10.0.2",
