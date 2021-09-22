@@ -14,6 +14,7 @@ import {
   getSharpOptionProps,
   transformImage,
   isOriginalSuffix,
+  isValidFilename,
 } from './multer-sharp.utils';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
 
@@ -79,8 +80,16 @@ export class MulterSharp implements StorageEngine, S3Storage {
 
         let { originalname } = file;
 
-        if (storageOpts.randomFilename) {
-          originalname = `${randomStringGenerator()}.${extension(mimetype)}`;
+        if (
+          storageOpts.useQueryParamName &&
+          req.query['name'] &&
+          isValidFilename(req.query['name'] as string)
+        ) {
+          originalname = req.query['name'] as string;
+        } else {
+          if (storageOpts.randomFilename) {
+            originalname = `${randomStringGenerator()}.${extension(mimetype)}`;
+          }
         }
 
         const routeParams = Object.keys(req.params);

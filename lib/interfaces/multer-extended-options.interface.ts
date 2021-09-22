@@ -14,6 +14,7 @@ export interface MultipleSizeOptions {
 export interface MulterExtendedOptions extends Pick<MulterOptions, 'fileFilter' | 'limits'> {
   dynamicPath?: string | string[];
   randomFilename?: boolean;
+  useQueryParamName?: boolean;
   resize?: ResizeOptions;
   resizeMultiple?: MultipleSizeOptions[];
   thumbnail?: MultipleSizeOptions;

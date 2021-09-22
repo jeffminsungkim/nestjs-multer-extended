@@ -62,3 +62,15 @@ export const getSharpOptions = (options: SharpOptions): SharpOptions => {
     ignoreAspectRatio: options.ignoreAspectRatio,
   };
 };
+
+export const isValidFilename = (filename: string) => {
+  try {
+    return (
+      decodeURIComponent(filename)
+        .split('.')
+        .filter((n) => !/^[a-zA-Z0-9-_\/]+$/.test(n)).length === 0
+    );
+  } catch (e) {
+    return false;
+  }
+};

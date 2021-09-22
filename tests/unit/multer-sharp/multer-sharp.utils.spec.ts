@@ -7,6 +7,7 @@ import {
   getSharpOptionProps,
   getSharpOptions,
   transformException,
+  isValidFilename,
 } from '../../../lib/multer-sharp/multer-sharp.utils';
 import { S3StorageOptions } from '../../../lib/multer-sharp/interfaces/s3-storage.interface';
 import { SharpOptions } from '../../../lib/multer-sharp/interfaces/sharp-options.interface';
@@ -111,6 +112,23 @@ describe('Shared Multer Sharp Utils', () => {
         ['resize', { width: 500, height: 450 }],
         ['ignoreAspectRatio', true],
       ]);
+    });
+  });
+
+  describe('isValidFilename', () => {
+    it('should return true', () => {
+      expect(isValidFilename('test.jpg')).toBeTruthy();
+      expect(isValidFilename('test.1.jpg')).toBeTruthy();
+      expect(isValidFilename('test-1.png')).toBeTruthy();
+      expect(isValidFilename('test_1.png')).toBeTruthy();
+      expect(isValidFilename('test-_1.png')).toBeTruthy();
+      expect(isValidFilename('folder/test-1.png')).toBeTruthy();
+    });
+
+    it('should return false', () => {
+      expect(isValidFilename('test:jpg.jpg')).toBeFalsy();
+      expect(isValidFilename('test%jpg.jpg')).toBeFalsy();
+      expect(isValidFilename('test\\jpg.jpg')).toBeFalsy();
     });
   });
 });
