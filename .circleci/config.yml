@@ -17,7 +17,7 @@ jobs:
   build:
     working_directory: ~/nestjs-multer-extended
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:16
     steps:
       - checkout
       - run:
@@ -45,7 +45,7 @@ jobs:
   unit_tests:
     working_directory: ~/nestjs-multer-extended
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:16
     steps:
       - checkout
       - *restore-cache
@@ -57,7 +57,7 @@ jobs:
   integration_tests:
     working_directory: ~/nestjs-multer-extended
     docker:
-      - image: circleci/node:12
+      - image: circleci/node:16
     steps:
       - checkout
       - *restore-cache
