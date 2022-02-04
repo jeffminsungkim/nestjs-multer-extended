@@ -30,7 +30,7 @@ export class MulterConfigLoader implements MulterS3ConfigService {
       ...s3Options.s3Config,
     });
     this.logger = s3Options.logger || new Logger(MulterConfigLoader.name);
-    this.logger.log(JSON.stringify(s3Options));
+
   }
 
   createMulterOptions(): MulterModuleOptions | Promise<MulterModuleOptions> {
