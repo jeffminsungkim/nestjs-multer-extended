@@ -16,6 +16,7 @@ import {
   isOriginalSuffix,
 } from './multer-sharp.utils';
 import { randomStringGenerator } from '@nestjs/common/utils/random-string-generator.util';
+import * as path from 'path';
 
 export interface EventStream {
   stream: NodeJS.ReadableStream & Sharp;
@@ -93,7 +94,9 @@ export class MulterSharp implements StorageEngine, S3Storage {
           } else {
             const paramDir = [];
             storageOpts.dynamicPath.forEach((pathSegment) => {
-              paramDir.push(routeParams.includes(pathSegment) ? req.params[pathSegment] : pathSegment);
+              paramDir.push(
+                routeParams.includes(pathSegment) ? req.params[pathSegment] : pathSegment,
+              );
             });
             params.Key = `${Key}/${paramDir.join('/')}/${originalname}`;
           }
@@ -160,11 +163,12 @@ export class MulterSharp implements StorageEngine, S3Storage {
           }),
           mergeMap((size) => {
             const { Body, ContentType } = size;
+            const paramPath = path.parse(params.Key);
             const newParams = {
               ...params,
               Body,
               ContentType,
-              Key: `${params.Key}-${size.suffix}`,
+              Key: `${paramPath.dir}/${paramPath.name}-${size.suffix}${paramPath.ext}`,
             };
             const upload = storageOpts.s3.upload(newParams);
             const currentSize = { [size.suffix]: 0 };
