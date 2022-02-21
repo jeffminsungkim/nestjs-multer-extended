@@ -45,13 +45,13 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@nestjs/common": "^6.11.5 || ^7.0.0",
-    "@nestjs/platform-express": "^6.11.5 || ^7.0.0"
+    "@nestjs/common": "^6.11.5 || ^7.0.0 || ^8.0.0",
+    "@nestjs/platform-express": "^6.11.5 || ^7.0.0 || ^8.0.0"
   },
   "dependencies": {
     "aws-sdk": "^2.802.0",
     "mime-types": "^2.1.27",
-    "sharp": "^0.26.0"
+    "sharp": "^0.29.0"
   },
   "devDependencies": {
     "@commitlint/cli": "13.1.0",
