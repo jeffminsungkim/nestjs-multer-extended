@@ -50,8 +50,6 @@ export function AmazonS3FilesInterceptor(
 
       this.multer.s;
 
-      console.log('FIELD NAMES', fieldNames);
-
       await new Promise<void>((resolve, reject) =>
         this.multer.fields(fieldNames)(ctx.getRequest(), ctx.getResponse(), (err: any) => {
           if (err) {
