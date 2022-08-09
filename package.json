@@ -45,8 +45,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "@nestjs/common": "^6.11.5 || ^7.0.0",
-    "@nestjs/platform-express": "^6.11.5 || ^7.0.0"
+    "@nestjs/common": "^6.11.5 || ^8.0.0",
+    "@nestjs/platform-express": "^6.11.5 || ^8.0.0"
   },
   "dependencies": {
     "aws-sdk": "^2.802.0",
