@@ -99,6 +99,26 @@ describe('AppModule', () => {
       expect(res.status).toEqual(201);
       expect(res.body.key).toEqual(`${basePath}/cat.jpg`);
     });
+
+    it(`should upload an image with arbitary filename`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/image-upload/arbitary-filename?name=arbitary.jpg`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/smile.jpg'));
+
+      expect(res.status).toEqual(201);
+      expect(res.body.key).toEqual(`${basePath}/arbitary.jpg`);
+    });
+
+    it(`should upload an image with arbitary filename fallback`, async () => {
+      const res = await request(app.getHttpServer())
+        .post(`/image-upload/arbitary-filename?name=arbitary:.jpg`)
+        .set('Content-Type', 'multipart/form-data')
+        .attach('file', path.resolve(__dirname, 'data/smile.jpg'));
+
+      expect(res.status).toEqual(201);
+      expect(res.body.key).toEqual(`${basePath}/smile.jpg`);
+    });
   });
 
   describe('UserProfileImageUploadController /POST', () => {

@@ -5,4 +5,5 @@ export interface AmazonS3UploadOptions extends Partial<S3.Types.PutObjectRequest
   Key?: any;
   dynamicPath?: string | string[];
   randomFilename?: boolean;
+  useQueryParamName?: boolean;
 }

@@ -41,4 +41,10 @@ export class ImageUploadController {
   async uploadBigImageUsingCustomLimitOption(@UploadedFile() file: any): Promise<any> {
     return file;
   }
+
+  @Post('arbitary-filename')
+  @UseInterceptors(AmazonS3FileInterceptor('file', { useQueryParamName: true }))
+  async uploadImageWithArbitaryFileName(@UploadedFile() file: any): Promise<any> {
+    return file;
+  }
 }
